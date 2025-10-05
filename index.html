@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chinatown — Abiti e oggetti unici</title>
+    <meta name="description"
+        content="Abiti, gioielli e mobili selezionati da Bali, India, Indonesia e dalle fiere italiane. Pezzi unici, eleganti e raffinati.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #FBF7F3 0%, #F5F1ED 100%);
+            --muted: #6b6b6b;
+            --accent: #b78b57;
+            --accent-hover: #9d6f40;
+            --card: #fff;
+            --maxw: 1200px;
+            --radius: 16px;
+            --shadow: 0 8px 32px rgba(183, 139, 87, 0.15);
+            --shadow-hover: 0 12px 48px rgba(183, 139, 87, 0.25);
+            --gradient-gold: linear-gradient(135deg, #b78b57 0%, #d4af7a 100%);
+            --text-dark: #2c2c2c;
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image:
+                radial-gradient(circle at 25% 25%, var(--accent) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--accent) 1px, transparent 1px);
+            background-size: 100px 100px, 60px 60px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Header with glassmorphism */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            margin: 20px 0;
+            padding: 20px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .brand {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .logo {
+            height: 64px;
+            width: 64px;
+            border-radius: 16px;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .logo:hover::before {
+            animation: shimmer 0.6s ease;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .brand-text h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-text p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        nav a {
+            margin-left: 24px;
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            margin: 40px 0;
+            min-height: 60vh;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin: 0 0 20px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 0 0 32px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 12px;
+            background: var(--gradient-gold);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced Filters */
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .chip {
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .chip:hover {
+            background: rgba(183, 139, 87, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .chip.active {
+            background: var(--gradient-gold);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Featured Section */
+        .featured-aside {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInRight 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .featured-item {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .featured-item:hover {
+            background: rgba(183, 139, 87, 0.05);
+            transform: translateX(8px);
+        }
+
+        .featured-item img {
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .featured-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card:hover::before {
+            opacity: 0.05;
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 20px 0 12px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+        }
+
+        .modal.open {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal .panel {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 32px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 0;
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin: 80px 0 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(183, 139, 87, 0.2);
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin: 0;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Info Sections */
+        .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .map {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 320px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            margin: 80px 0 40px;
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+        }
+
+        /* Form Enhancements */
+        form input {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(183, 139, 87, 0.2);
+            margin-bottom: 16px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(183, 139, 87, 0.1);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .modal .panel {
+                grid-template-columns: 1fr
+            }
+
+            .cols {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-card {
+                padding: 32px;
+            }
+        }
+
+        @media (max-width:640px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px
+            }
+
+            nav {
+                margin-top: 16px
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .modal .panel {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+
+        /* Smooth Scrolling for Internal Links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Intersection Observer Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo">C.Town</div>
+                <div class="brand-text">
+                    <h1>Chinatown</h1>
+                    <p>Abiti e oggetti selezionati — Bali · India · Indonesia</p>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <a href="#prodotti">Prodotti</a>
+                <a href="#chi-siamo">Chi siamo</a>
+                <a href="#dove-siamo">Dove siamo</a>
+                <a href="#contatti">Contatti</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-card">
+                <h1>Unica. Raffinata. Scegliere con cura.</h1>
+                <p>Abiti e accessori in edizione limitata, gioielli artigianali e mobili in legno — ogni pezzo racconta
+                    un viaggio attraverso culture millenarie e tradizioni artigianali.</p>
+                <a class="btn" href="#prodotti">Scopri le collezioni</a>
+
+                <div class="filters">
+                    <div class="chip active" data-filter="all">Tutti</div>
+                    <div class="chip" data-filter="abiti">Abiti & Sciarpe</div>
+                    <div class="chip" data-filter="gioielli">Gioielli</div>
+                    <div class="chip" data-filter="arredo">Arredo</div>
+                </div>
+            </div>
+
+            <aside class="featured-aside">
+                <h3 style="margin-top:0;font-family:'Playfair Display', serif;font-size:24px">Selezione in evidenza</h3>
+                <p style="color:var(--muted);margin-bottom:24px">Pezzi unici e curati, arrivati recentemente da Bali e
+                    dalle fiere italiane.</p>
+                <div style="display:flex;gap:8px;flex-direction:column">
+                    <div class="featured-item" onclick="openModal(1)">
+                        <img src="https://images.unsplash.com/photo-1520975698518-6a1f60a6fe5e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3"
+                            alt="abito" width="84" height="84">
+                        <div>
+                            <div style="font-weight:700;font-size:16px">Kaftano ricamato</div>
+                            <div style="color:var(--muted);font-size:13px">Bali — 2 pezzi disponibili</div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item" onclick="openModal(2)">
+                        <img src="https://images.unsplash.com/photo-1536612022556-5d6a2f0f0fbd?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3"
+                            alt="gioiello" width="84" height="84">
+                        <div>
+                            <div style="font-weight:700;font-size:16px">Collana in argento intarsiato</div>
+                            <div style="color:var(--muted);font-size:13px">India — pezzo unico</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="prodotti">
+            <div class="section-title">
+                <h2>Collezioni</h2>
+                <div style="color:var(--muted)">Pezzi in vetrina — visita il negozio per acquistare</div>
+            </div>
+
+            <div class="grid fade-in" id="productGrid" aria-live="polite">
+                <!-- cards generated by JS -->
+            </div>
+        </section>
+
+        <section id="chi-siamo" class="fade-in">
+            <div class="section-title">
+                <h2>Chi siamo</h2>
+            </div>
+            <div class="cols">
+                <div class="info-card">
+                    <h3 style="margin-top:0;font-family:'Playfair Display',serif;font-size:24px">La nostra storia</h3>
+                    <p style="color:var(--muted);line-height:1.7">Siamo una bottega che seleziona capi, gioielli e
+                        oggetti d'arredo durante viaggi e visite a fiere specializzate. Privilegiamo l'artigianato
+                        locale e pezzi in edizione limitata: non troverai serie numerose, ma pochi modelli curati nei
+                        dettagli e nella qualità dei materiali.</p>
+                    <ul style="color:var(--muted);line-height:1.6;margin-top:20px">
+                        <li><strong>Origini:</strong> Bali, India, Indonesia</li>
+                        <li><strong>Fiere:</strong> Milano, Bologna, Vicenza</li>
+                        <li><strong>Prodotti:</strong> abiti, sciarpe, gioielli, mobili in legno</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3 style="margin-top:0;font-family:'Playfair Display',serif;font-size:24px">I nostri valori</h3>
+                    <p style="color:var(--muted);line-height:1.7">Sostenibilità nella scelta, qualità artigianale,
+                        attenzione alla provenienza e all'unicità del pezzo. Ogni acquisto supporta direttamente gli
+                        artigiani locali e le loro comunità.</p>
+                    <div style="margin-top:24px">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+                            <div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div>
+                            <span style="color:var(--muted)">Commercio equo e sostenibile</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+                            <div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div>
+                            <span style="color:var(--muted)">Pezzi unici e limitati</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div>
+                            <span style="color:var(--muted)">Qualità artigianale garantita</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dove-siamo" class="fade-in">
+            <div class="section-title">
+                <h2>Dove siamo</h2>
+            </div>
+            <div class="cols">
+                <div class="info-card">
+                    <h3 style="margin-top:0;font-family:'Playfair Display',serif;font-size:24px">Visita il negozio</h3>
+                    <p style="color:var(--muted);line-height:1.7">Via Antonio Lazzari, 3, 30174 Venezia VE</p>
+                    <p style="color:var(--muted);line-height:1.7"><strong>Orari:</strong><br><strong>Lunedì:</strong>
+                        15:00–19:30<br><strong>Martedi-Sabato:</strong> 09:00–19:30<br><strong>Domenica:</strong>chiuso
+                    </p>
+                    <p style="color:var(--muted);line-height:1.7"><strong>Telefono:</strong> +39 391 483
+                        8820<br><strong>Email:</strong> info@chinatown.it</p>
+                    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+                        <a class="chip" href="#contatti"
+                            style="background:var(--gradient-gold);color:#fff">Contattaci</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2241.216508749587!2d12.232002876933923!3d45.49271973107012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb11e4c8d5f1b%3A0x9f58d9d67f1b3f23!2sVia%20Antonio%20Lazzari%2C%203%2C%2030174%20Venezia%20VE!5e0!3m2!1sit!2sit!4v1695655555555!5m2!1sit!2sit"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatti" class="fade-in">
+            <div class="section-title">
+                <h2>Contatti & Social</h2>
+                <div style="color:var(--muted)">Seguici per novità e nuovi arrivi</div>
+            </div>
+
+
+
+            <div class="info-card">
+                <h4 style="margin-top:0;font-family:'Playfair Display',serif;font-size:20px">Seguici sui social</h4>
+                <p style="color:var(--muted);margin-bottom:24px">Scopri i dietro le quinte dei nostri viaggi e le storie
+                    degli artigiani che collaborano con noi.</p>
+                <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+                    <a class="chip" href="https://www.instagram.com" aria-label="Instagram"
+                        style="background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff">Instagram</a>
+                    <a class="chip" href="https://www.facebook.com" aria-label="Facebook"
+                        style="background:#1877f2;color:#fff">Facebook</a>
+                    <a class="chip" href="https://www.tiktok.com" aria-label="TikTok"
+                        style="background:#000;color:#fff">TikTok</a>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Chinatown — Tutti i diritti riservati.</p>
+    </footer>
+    </div>
+
+    <!-- Modal: dettaglio prodotto -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="panel" role="document">
+            <button class="close" onclick="closeModal()" aria-label="Chiudi">✕</button>
+            <div style="min-height:320px">
+                <div id="modalContent">
+                    <!-- dinamico -->
+                </div>
+            </div>
+            <aside style="padding:24px">
+                <h3 id="pTitle" style="font-family:'Playfair Display',serif;font-size:28px;margin:0 0 16px"></h3>
+                <p id="pDesc" style="color:var(--muted);line-height:1.6;margin-bottom:20px"></p>
+                <p id="pOrigin" style="color:var(--accent);font-weight:700;margin:20px 0;font-size:16px"></p>
+                <div style="margin-top:24px">
+                    <div
+                        style="font-size:14px;color:var(--muted);margin-bottom:20px;padding:16px;background:rgba(183,139,87,0.05);border-radius:12px">
+                        <strong>Disponibilità:</strong> Pezzi limitati - Visita il negozio per vedere dal vivo
+                    </div>
+                    <button class="btn" onclick="contactAbout()" style="width:100%">Contattaci per maggiori
+                        informazioni</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Dati dei prodotti
+        const products = [
+            {
+                id: 1,
+                cat: 'abiti',
+                title: 'Kaftano ricamato a mano',
+                desc: 'Elegante kaftano lungo con ricami tradizionali balinesi fatti a mano. Realizzato in cotone biologico con dettagli in filo dorato. Perfetto per cerimonie ed eventi speciali.',
+                origin: 'Bali — 2 pezzi disponibili',
+                img: 'https://images.unsplash.com/photo-1520975698518-6a1f60a6fe5e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 2,
+                cat: 'gioielli',
+                title: 'Collana in argento intarsiato',
+                desc: 'Preziosa collana in argento 925 con intarsi tradizionali e pendente lavorato a mano da maestri artigiani indiani. Ogni dettaglio racconta una storia millenaria.',
+                origin: 'India — pezzo unico',
+                img: 'https://images.unsplash.com/photo-1536612022556-5d6a2f0f0fbd?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 3,
+                cat: 'arredo',
+                title: 'Libreria in teak massello',
+                desc: 'Libreria artigianale in legno di teak massello con finitura naturale. Ogni ripiano è scolpito a mano secondo le tradizioni indonesiane, perfetta per ambienti raffinati.',
+                origin: 'Indonesia — produzione limitata',
+                img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 4,
+                cat: 'abiti',
+                title: 'Abito da cerimonia seta',
+                desc: 'Raffinato abito da cerimonia in misto seta con linee contemporanee e dettagli sartoriali. Progettato per la donna moderna che cerca eleganza senza tempo.',
+                origin: 'Fiera di Milano — 1 pezzo',
+                img: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 5,
+                cat: 'gioielli',
+                title: 'Anello con pietra naturale',
+                desc: 'Anello artigianale con pietra semipreziosa incastonata a mano. L\'incisione tradizionale balinese rende ogni pezzo assolutamente unico e irripetibile.',
+                origin: 'Bali — pezzo unico',
+                img: 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 6,
+                cat: 'arredo',
+                title: 'Console intagliata',
+                desc: 'Elegante console in legno massello finemente intagliata, perfetta per ingressi e salotti. Le decorazioni tradizionali indiane creano giochi di luce e ombra unici.',
+                origin: 'India — produzione limitata',
+                img: 'https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 7,
+                cat: 'abiti',
+                title: 'Sciarpa in seta stampata',
+                desc: 'Pregiata sciarpa in pura seta con stampe tradizionali indonesiane. I colori vivaci e i motivi geometrici la rendono un accessorio versatile e raffinato.',
+                origin: 'Indonesia — 3 pezzi',
+                img: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 8,
+                cat: 'gioielli',
+                title: 'Bracciale tribale argento',
+                desc: 'Bracciale in argento massiccio con decorazioni tribali autentiche. Ogni simbolo ha un significato spirituale nella cultura balinese tradizionale.',
+                origin: 'Bali — 2 pezzi',
+                img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 9,
+                cat: 'arredo',
+                title: 'Tavolino da tè giapponese',
+                desc: 'Autentico tavolino da tè in legno di bambù, acquisito in una fiera specializzata. Perfetto per creare angoli zen e momenti di contemplazione.',
+                origin: 'Fiera di Bologna — pezzo unico',
+                img: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3'
+            }
+        ];
+
+        // Render della griglia prodotti
+        const grid = document.getElementById('productGrid');
+
+        function renderProducts(productList) {
+            grid.innerHTML = '';
+            productList.forEach((product, index) => {
+                const card = document.createElement('article');
+                card.className = 'card fade-in';
+                card.setAttribute('tabindex', '0');
+                card.style.animationDelay = `${index * 0.1}s`;
+
+                card.innerHTML = `
+          <img src="${product.img}" alt="${product.title}" loading="lazy">
+          <h3>${product.title}</h3>
+          <p>${product.origin}</p>
+        `;
+
+                card.addEventListener('click', () => openModal(product.id));
+                card.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') openModal(product.id);
+                });
+
+                grid.appendChild(card);
+            });
+
+            // Trigger animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Inizializza con tutti i prodotti
+        renderProducts(products);
+
+        // Gestione filtri
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                // Rimuovi classe active da tutti i chip
+                document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                // Aggiungi classe active al chip cliccato
+                chip.classList.add('active');
+
+                const filter = chip.dataset.filter;
+                if (filter === 'all') {
+                    renderProducts(products);
+                } else {
+                    const filteredProducts = products.filter(p => p.cat === filter);
+                    renderProducts(filteredProducts);
+                }
+            });
+        });
+
+        // Funzioni Modal
+        const modal = document.getElementById('modal');
+
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('pTitle').textContent = product.title;
+            document.getElementById('pDesc').textContent = product.desc;
+            document.getElementById('pOrigin').textContent = product.origin;
+
+            document.getElementById('modalContent').innerHTML = `
+        <img src="${product.img}" alt="${product.title}" 
+             style="width:100%;height:400px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)">
+        <div class="thumbs" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+          <img src="${product.img}&q=60&w=400" alt="vista 1" 
+               style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:2px solid #fff;box-shadow:var(--shadow);cursor:pointer"
+               onclick="document.querySelector('#modalContent img').src='${product.img}'">
+        </div>
+      `;
+
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        // Chiudi modal cliccando fuori o con ESC
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function contactAbout() {
+            const product = document.getElementById('pTitle').textContent;
+            alert(`Grazie per l'interesse verso "${product}"!\n\nContattaci per maggiori informazioni:\n📧 info@chinatown.it\n📞 +39 02 1234 5678\n\nTi aspettiamo in negozio per vedere il pezzo dal vivo!`);
+        }
+
+        // Gestione form newsletter
+        function handleSubscription(event) {
+            event.preventDefault();
+            const button = event.target.querySelector('button');
+            const btnText = button.querySelector('.btn-text');
+            const loading = button.querySelector('.loading');
+
+            // Simula invio
+            btnText.style.display = 'none';
+            loading.style.display = 'inline-block';
+
+            setTimeout(() => {
+                btnText.style.display = 'inline';
+                loading.style.display = 'none';
+                btnText.textContent = '✓ Iscritto con successo!';
+                button.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+
+                // Reset dopo 3 secondi
+                setTimeout(() => {
+                    btnText.textContent = 'Iscriviti alla newsletter';
+                    button.style.background = 'var(--gradient-gold)';
+                    event.target.reset();
+                }, 3000);
+            }, 2000);
+        }
+
+        // Intersection Observer per animazioni scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Osserva tutti gli elementi con classe fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
