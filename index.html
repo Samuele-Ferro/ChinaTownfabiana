@@ -423,7 +423,7 @@
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
             padding: 32px;
             display: grid;
@@ -474,9 +474,16 @@
 
         .modal-image-container {
             width: 100%;
-            max-height: 500px;
+            max-height: 600px;
             overflow: hidden;
             border-radius: 16px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image-container:hover {
+            transform: scale(1.02);
         }
 
         .modal-image-container img {
@@ -485,6 +492,11 @@
             object-fit: cover;
             border-radius: 16px;
             box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image-container:hover img {
+            transform: scale(1.05);
         }
 
         /* Section Titles */
@@ -555,6 +567,15 @@
             overflow: hidden;
             height: 320px;
             box-shadow: var(--shadow);
+            position: relative;
+            width: 100%;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
         }
 
         /* Footer */
@@ -707,6 +728,15 @@
 
             .modal-image-container {
                 max-height: 300px;
+                cursor: pointer;
+            }
+
+            .modal-image-container:hover {
+                transform: none;
+            }
+
+            .modal-image-container:hover img {
+                transform: none;
             }
 
             /* Section titles mobile */
@@ -741,6 +771,12 @@
 
             .map {
                 height: 250px;
+                margin-top: 20px;
+            }
+
+            .map iframe {
+                width: 100%;
+                height: 100%;
             }
 
             /* Footer mobile */
@@ -762,6 +798,15 @@
 
             .card img {
                 height: 200px;
+            }
+
+            .map {
+                height: 200px;
+            }
+
+            .info-card p {
+                font-size: 14px;
+                line-height: 1.5;
             }
         }
     </style>
@@ -797,8 +842,8 @@
                 <div class="filters">
                     <div class="chip active" data-filter="all">Tutti</div>
                     <div class="chip" data-filter="Abbigliamento">Abbigliamento</div>
-                    <div class="chip" data-filter="gioielli">Gioielli</div>
-                    <div class="chip" data-filter="arredo">Arredo</div>
+                    <div class="chip" data-filter="Gioielli">Gioielli</div>
+                    <div class="chip" data-filter="Arredo">Arredo</div>
                 </div>
             </div>
         </section>
@@ -860,24 +905,24 @@
             <div class="cols">
                 <div class="info-card">
                     <h3>Visita il negozio</h3>
-                    <p>Via Antonio Lazzari, 3, 30174 Venezia VE</p>
-                    <p><strong>Orari:</strong><br><strong>Lunedì:</strong>
-                        15:30–19:00<br><strong>Martedi-Sabato:</strong>
-                        09:30-12:30/15:30–19:00<br><strong>Domenica:</strong>chiuso
+                    <p><strong>Indirizzo:</strong><br>Via Antonio Lazzari, 3<br>30174 Venezia VE</p>
+                    <p><strong>Orari di apertura:</strong><br>
+                        <span style="display:block;margin:8px 0"><strong>Lunedì:</strong> 15:30–19:00</span>
+                        <span style="display:block;margin:8px 0"><strong>Martedì-Sabato:</strong> 09:30-12:30 /
+                            15:30–19:00</span>
+                        <span style="display:block;margin:8px 0"><strong>Domenica:</strong> chiuso</span>
                     </p>
-                    <p><strong>Telefono:</strong> +39 391 483
-                        8820<br><strong>Email:</strong> chinatownfabiana@gmail.com</p>
-                    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-                        <a class="chip" href="#contatti"
-                            style="background:var(--gradient-gold);color:#fff;text-decoration:none">Contattaci</a>
-                    </div>
+                    <p><strong>Contatti:</strong><br>
+                        <span style="display:block;margin:8px 0"><strong>Telefono:</strong> +39 391 483 8820</span>
+                        <span style="display:block;margin:8px 0"><strong>Email:</strong>
+                            chinatownfabiana@gmail.com</span>
+                    </p>
                 </div>
                 <div>
                     <div class="map">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d174.80162391640152!2d12.243292006583486!3d45.49344889192342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb46aadc5cd43%3A0xc60d3e402b6eaaff!2sChina%20Town%20Sas!5e0!3m2!1sit!2sus!4v1760637697551!5m2!1sit!2sus"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                 </div>
@@ -895,17 +940,19 @@
                 <p style="color:var(--muted);margin-bottom:24px">Scopri i dietro le quinte dei nostri viaggi e le storie
                     degli artigiani che collaborano con noi.</p>
                 <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
-                    <a class="chip" href="https://www.instagram.com" aria-label="Instagram"
+                    <a class="chip" href="https://www.instagram.com/chinatown_by_fabiana/" aria-label="Instagram"
                         style="background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;text-decoration:none">Instagram</a>
-                    <a class="chip" href="https://www.facebook.com" aria-label="Facebook"
-                        style="background:#1877f2;color:#fff;text-decoration:none">Facebook</a>
+                    <a class="chip"
+                        href="https://www.facebook.com/people/Chinatown-by-Fabiana/100063585775856/?mibextid=wwXIfr&rdid=x7jM84ItY6Zz7tEn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Gm62Muq5W%2F%3Fmibextid%3DwwXIfr"
+                        aria-label="Facebook" style="background:#1877f2;color:#fff;text-decoration:none">Facebook</a>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>© 2024 Chinatown — Tutti i diritti riservati.</p>
+            <p>© 2025 Chinatown S.A.S. — Tutti i diritti riservati.</p>
         </footer>
+
     </div>
 
     <!-- Modal: dettaglio prodotto -->
@@ -934,7 +981,7 @@
         const products = [
             {
                 id: 1,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Collana in ebano e corallo',
                 desc: 'Una collana che racconta l\'incontro tra la profondità dell\'ebano e il calore del corallo. Ogni dettaglio è pensato per esaltare la bellezza naturale dei materiali, creando un equilibrio raffinato tra tono scuro e accento luminoso. Un pezzo unico, realizzato con cura artigianale, per chi cerca un gioiello che sappia distinguersi con semplicità e carattere.',
                 origin: 'Pezzo unico',
@@ -949,16 +996,8 @@
                 img: 'images/sciarpa_pura_lana.jpg'
             },
             {
-                id: 3,
-                cat: 'Abbigliamento',
-                title: 'Pantalone in velluto',
-                desc: 'Il velluto torna protagonista nella nuova collezione autunno/inverno. Pantaloni dal tocco morbido e dallo stile raffinato,pensati per offrire comfort e stile nelle giornate più fredde.',
-                origin: 'Pezzo unico',
-                img: 'images/pantalone_in_velluto.jpg'
-            },
-            {
                 id: 4,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Bracciali con pietre dure',
                 desc: 'Le pietre dure, con le loro tonalità intense e la loro consistenza naturale, diventano protagoniste di gioielli unici. Ogni creazione è lavorata con cura artigianale, per offrire accessori che combinano bellezza, autenticità e personalità.',
                 origin: 'Disponibilità limitata',
@@ -990,7 +1029,7 @@
             },
             {
                 id: 8,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Collana in corno',
                 desc: 'Una collana in corno dai dettagli naturali e irripetibili, è un pezzo unico,con venature naturali che ne rendono il carattere esclusivo.',
                 origin: 'Pezzo unico',
@@ -998,7 +1037,7 @@
             },
             {
                 id: 9,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Anelli in argento con pietre dure',
                 desc: 'I nostri anelli in argento, impreziositi da pietre dure selezionate, uniscono design raffinato e materiali naturali. Ogni pezzo è realizzato con cura artigianale, per offrire gioielli unici che esaltano lo stile personale con eleganza e autenticità.',
                 origin: 'Disponibilità limitata',
@@ -1006,7 +1045,7 @@
             },
             {
                 id: 10,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Collana di madreperla',
                 desc: 'La madreperla, con i suoi riflessi delicati, dona al gioiello un fascino unico e sofisticato. Ogni creazione è pensata per chi ama dettagli naturali e autentici.',
                 origin: 'Pezzo unico',
@@ -1014,7 +1053,7 @@
             },
             {
                 id: 11,
-                cat: 'arredo',
+                cat: 'Arredo',
                 title: 'Mobile in legno di teak',
                 desc: 'Realizzato in legno di teak, un materiale naturale noto per la sua resistenza e bellezza unica. Questo pezzo esprime autenticità e raffinatezza, grazie alle venature naturali e alla lavorazione artigianale.',
                 origin: 'Pezzo unico',
@@ -1022,7 +1061,7 @@
             },
             {
                 id: 12,
-                cat: 'gioielli',
+                cat: 'Gioielli',
                 title: 'Agata verde e peridoto',
                 desc: 'In questa immagine convivono due creazioni in pietre naturali: agata verde e peridoto. Ogni gioiello con venature e sfumature che lo rendono irripetibil combina eleganza e autenticità per chi ama dettagli originali.',
                 origin: 'Pezzo unico',
@@ -1035,6 +1074,62 @@
                 desc: 'La seta indiana dei vecchi sari prende nuova vita in queste sciarpe uniche. Ogni creazione è lavorata a mano, combinando sostenibilità, eleganza e carattere, per accessori che parlano di tradizione e originalità.',
                 origin: 'Disponibilità limitata',
                 img: 'images/sciarpe_seta_vecchi_sari.jpg'
+            },
+            {
+                id: 14,
+                cat: 'Arredo',
+                title: 'Vecchia credenza indiana',
+                desc: 'Autentico e ricco di storia.',
+                origin: 'Pezzo unico',
+                img: 'images/credenza_indiana.jpg'
+            },
+            {
+                id: 15,
+                cat: 'Gioielli',
+                title: 'Collana in agata verde',
+                desc: 'L\'agata verde, intensa e profonda, si accosta al quarzo citrino luminoso, creando un gioiello unico e originale.',
+                origin: 'Pezzo unico',
+                img: 'images/collana_agata_verde.jpg'
+            },
+            {
+                id: 16,
+                cat: 'Abbigliamento',
+                title: 'Maglia in cashmere & sciarpa in pura lana',
+                desc: 'Maglia in lana e cashmere, morbida e confortevole, abbinata a una sciarpa in pura lana ricamata e dipinta a mano. Pezzi unici che uniscono eleganza e artigianalità',
+                origin: 'Pezzo unico',
+                img: 'images/maglia_lana_sciarpa_lana.jpg'
+            },
+            {
+                id: 17,
+                cat: 'Abbigliamento',
+                title: 'Giacca in denim, maglia di cotone e sciarpa in pura lana',
+                desc: 'Giacca in denim, maglia in jersey di cotone e sciarpa in pura lana vergine: stile, comfort e materiali naturali in un look unico.',
+                origin: 'Disponibilità limitata',
+                img: 'images/giacca_denim_maglia_jersey_sciarpa_lana.jpg'
+            },
+            {
+                id: 18,
+                cat: 'Gioielli',
+                title: 'Le murrine balinesi si uniscono in un’unica collana',
+                desc: 'Collana con murrine balinesi vintage, argento e madreperla: un gioiello unico, elegante e ricco di storia.',
+                origin: 'Pezzo unico',
+                img: 'images/collana_murrine_balinesi.jpg'
+            },
+            {
+                id: 19,
+                cat: 'Abbigliamento',
+                title: 'Sciarpe indiane di pura lana',
+                desc: 'Scarpa in pura lana, ricamata e dipinta a mano: pezzo unico, autentico e creativo.',
+                origin: 'Disponibili in diversi modelli unici',
+                img: 'images/sciarpa_pura_lana2.jpg'
+            },
+            {
+                id: 20,
+                cat: 'Abbigliamento',
+                title: 'Pantaloni in velluto',
+                desc: 'Le trame del velluto raccontano una storia di morbidezza e calore. Questo pantalone, elegante e confortevole, si distingue per la sua texture ricca e la luminosità naturale del tessuto.',
+                origin: 'Pezzo unico',
+                img: 'images/pantalone_in_velluto2.jpg'
             }
         ];
 
@@ -1105,12 +1200,61 @@
 
             document.getElementById('modalContent').innerHTML = `
   <img src="${product.img}" alt="${product.title}" 
-       style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)">
+       style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)"
+       onclick="openFullscreenImage('${product.img}', '${product.title}')">
 `;
 
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+        }
+
+        function openFullscreenImage(imageSrc, imageAlt) {
+            // Create fullscreen image overlay
+            const fullscreenOverlay = document.createElement('div');
+            fullscreenOverlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                cursor: pointer;
+                backdrop-filter: blur(10px);
+            `;
+
+            const fullscreenImage = document.createElement('img');
+            fullscreenImage.src = imageSrc;
+            fullscreenImage.alt = imageAlt;
+            fullscreenImage.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                border-radius: 12px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                transition: transform 0.3s ease;
+            `;
+
+            fullscreenOverlay.appendChild(fullscreenImage);
+            document.body.appendChild(fullscreenOverlay);
+
+            // Close on click
+            fullscreenOverlay.addEventListener('click', () => {
+                document.body.removeChild(fullscreenOverlay);
+            });
+
+            // Close on escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    document.body.removeChild(fullscreenOverlay);
+                    document.removeEventListener('keydown', handleEscape);
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
         }
 
         function closeModal() {
